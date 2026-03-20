@@ -4,16 +4,19 @@ class Solution {
         for(int i=0; i<nums.length; i++){
             int f=0;
             for(int j=i+1; j<nums.length; j++){
-                if( (nums[i] + nums[j]) == target){
+                if(nums[i] + nums[j] == target){
                     total[0] = i;
                     total[1] = j;
-                    f=1;
+                    f = 1;
                 }
             }
-            if(f==1)
-            break;
+            if(f == 1){
+                return total;
+            }
         }
 
+        total[0] = -1;
+        total[1] = -1;
         return total;
     }
 }
