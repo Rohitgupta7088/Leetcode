@@ -1,10 +1,10 @@
 class Solution {
     public String countAndSay(int n) {
         String oldstr = "";
-        return c_s(1, oldstr, n);
+        return helper(1, oldstr, n);
     }
 
-    public String c_s(int num, String oldstr, int n){
+    public String helper(int num, String oldstr, int n){
         if(num > n){
             return oldstr;
         }
@@ -12,7 +12,7 @@ class Solution {
         String newstr = "";
         if(num == 1){
             oldstr = "1";
-            return c_s(num+1, oldstr, n);
+            return helper(num+1, oldstr, n);
         }
 
         int i=0;
@@ -32,6 +32,6 @@ class Solution {
             i++;
         }
 
-        return c_s(num+1, newstr, n);
+        return helper(num+1, newstr, n);
     }
 }
