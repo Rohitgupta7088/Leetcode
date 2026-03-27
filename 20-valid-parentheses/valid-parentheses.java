@@ -24,11 +24,6 @@ class Solution {
             }
         }
 
-        if(ss.isEmpty()){
-            return true;
-        }
-        else{
-            return false;
-        }
+        return ss.isEmpty();
     }
 }
