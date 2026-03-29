@@ -1,6 +1,6 @@
 class Solution {
     public int maxLengthBetweenEqualCharacters(String s) {
-        int arr[] = new int[s.length()];
+        int max = -1;
         for(int i=0; i<s.length(); i++){
             int ei = 0;
             for(int j=i+1; j<s.length(); j++){
@@ -8,18 +8,9 @@ class Solution {
                     ei = j;
                 }
             }
-
-            if( ei == 0 ){
-                arr[i] = -1;
+            if(ei > 0){
+            max = Math.max(s.substring(i+1,ei).length(), max);
             }
-            else{
-                arr[i] = s.substring(i+1, ei).length();
-            }
-        }
-
-        int max = Integer.MIN_VALUE;
-        for(int i=0;i<arr.length; i++){
-            max = Math.max(arr[i], max);
         }
 
         return max;
