@@ -1,10 +1,5 @@
 class Solution {
     public int longestSubstring(String s, int k) {
-        return helper(s, k);
-    }
-
-    public int helper(String s, int k){
-
         if(s.length() == 0){
             return 0;
         }
@@ -33,9 +28,10 @@ class Solution {
         String leftsub = s.substring(0, invalididx);
         String rightsub = s.substring(invalididx+1);
 
-        int left =  helper(leftsub, k);
-        int right =  helper(rightsub, k);
+        int left =  longestSubstring(leftsub, k);
+        int right =  longestSubstring(rightsub, k);
 
         return Math.max(left, right);
     }
+
 }
