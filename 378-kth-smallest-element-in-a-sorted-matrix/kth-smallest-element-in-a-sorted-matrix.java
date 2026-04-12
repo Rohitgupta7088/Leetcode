@@ -33,9 +33,11 @@ class Solution {
         while(i < matrix[row].length){
             sorted.add(matrix[row][i++]);
         }
+        
         while(j<ll.size()){
             sorted.add(ll.get(j++));
         }
+
         ll.clear();
         ll.addAll(sorted);
 
