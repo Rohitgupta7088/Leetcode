@@ -44,7 +44,6 @@ class Solution {
             hm.remove(max);
             i++;
         }
-
         return a;
     }
 }
