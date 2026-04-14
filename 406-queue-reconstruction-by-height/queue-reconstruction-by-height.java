@@ -47,7 +47,7 @@ class Solution {
                 maxidx = i;
             }            
         }
-
+        
         ll.add(people[maxidx][0]);
         ll.add(people[maxidx][1]);
 
