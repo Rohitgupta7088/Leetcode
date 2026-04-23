@@ -20,8 +20,8 @@ class Solution {
             }
         }
 
-        for(int i=left; i<=right; i++){
-            ll.add(nums[i]);
+        while(left<=right){
+            ll.add(nums[left++]);
         }
         return ll;
     }
