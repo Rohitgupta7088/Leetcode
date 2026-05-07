@@ -1,14 +1,14 @@
 class Solution {
     public int numberOfSubarrays(int[] nums, int k) {
         int n = nums.length;
-        // if(n==1 && k==1){
-        //     if(nums[0]%2 == 0){
-        //         return 0;
-        //     }
-        //     else{
-        //         return 1;
-        //     }
-        // }
+        if(n==1 && k==1){
+            if(nums[0]%2 == 0){
+                return 0;
+            }
+            else{
+                return 1;
+            }
+        }
 
         int left = 0;
         int right = 0;
