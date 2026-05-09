@@ -9,8 +9,11 @@ class Solution {
                 ss.pop();
             }
 
-            if(i<n){
-              result[idx] =  ss.isEmpty() ? -1 : ss.peek();
+            if(ss.isEmpty()){
+                result[idx] = -1;
+            }
+            else{
+                result[idx] = ss.peek();
             }
 
             ss.push(nums[idx]);
