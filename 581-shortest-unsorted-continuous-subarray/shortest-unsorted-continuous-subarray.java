@@ -7,36 +7,46 @@ class Solution {
         int left = 0;
         int right = 0;
         boolean sorted = true;
-        Stack<Integer> ss = new Stack<>();
+        //Stack<Integer> ss = new Stack<>();
         for(int i=0; i<n; i++){
-            while(!ss.isEmpty() && ss.peek()<=nums[i]){
-                ss.pop();
-            }
-            if(!ss.isEmpty() && ss.peek() > nums[i]){
+            // while(!ss.isEmpty() && ss.peek()<=nums[i]){
+            //     ss.pop();
+            // }
+            // if(!ss.isEmpty() && ss.peek() > nums[i]){
+            //     left = i-1;
+            //     sorted = false;
+            //     break;
+            // }
+            // ss.push(nums[i]);
+
+            if(i>0 && nums[i-1] > nums[i]){
                 left = i-1;
                 sorted = false;
                 break;
             }
-            ss.push(nums[i]);
         }
 
         if(sorted){
             return 0;
         }
-        ss.clear();
+        //ss.clear();
 
         for(int i=n-1; i>=0; i--){
-            while(!ss.isEmpty() && ss.peek()>=nums[i]){
-                ss.pop();
-            }
-            if(!ss.isEmpty() && ss.peek() < nums[i]){
-                right = i+1;
+            // while(!ss.isEmpty() && ss.peek()>=nums[i]){
+            //     ss.pop();
+            // }
+            // if(!ss.isEmpty() && ss.peek() < nums[i]){
+            //     right = i+1;
+            //     break;
+            // }
+            // ss.push(nums[i]);
+            if(nums[i-1]>nums[i]){
+                right = i;
                 break;
             }
-            ss.push(nums[i]);
         }
 
-        ss.clear();
+        //ss.clear();
 
         int minval = Integer.MAX_VALUE;
         int maxval = Integer.MIN_VALUE;
