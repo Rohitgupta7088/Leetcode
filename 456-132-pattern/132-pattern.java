@@ -8,16 +8,12 @@ class Solution {
         Stack<Integer> ss = new Stack<>();
         int second = Integer.MIN_VALUE;
         for(int i=n-1; i>=0; i--){
-            if(ss.isEmpty()){
-                ss.push(nums[i]);
-                continue;
-            }
             if(nums[i]<second){
                 return true;
             }
             else if(nums[i]>=second){
                 while(!ss.isEmpty() && nums[i] > ss.peek()){
-                    second = ss.pop();
+                    second = Math.max(ss.pop(), second);
                 }
                 ss.push(nums[i]);
             }
