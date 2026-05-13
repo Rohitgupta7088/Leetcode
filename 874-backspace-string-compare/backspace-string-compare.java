@@ -2,28 +2,60 @@ class Solution {
     public boolean backspaceCompare(String s, String t) {
         int n1=s.length();
         int n2=t.length();
-        Stack<Character> s1 = new Stack<>();
-        for(int i=0; i<n1; i++){
+        // Stack<Character> s1 = new Stack<>();
+        // for(int i=0; i<n1; i++){
+        //     char ch = s.charAt(i);
+        //     if(ch != '#'){
+        //         s1.push(ch);
+        //     }
+        //     else if(!s1.isEmpty() && ch == '#'){
+        //         s1.pop();
+        //     }
+        // }
+
+        // Stack<Character> t1 = new Stack<>();
+        // for(int i=0; i<n2; i++){
+        //     char ch = t.charAt(i);
+        //     if(ch != '#'){
+        //         t1.push(ch);
+        //     }
+        //     else if(!t1.isEmpty() && ch == '#'){
+        //         t1.pop();
+        //     }
+        // }
+
+        // return s1.equals(t1);
+
+        int count=0;
+        StringBuilder S = new StringBuilder();
+        for(int i=n1-1; i>=0; i--){
             char ch = s.charAt(i);
-            if(ch != '#'){
-                s1.push(ch);
+            if(ch == '#'){
+                count++;
             }
-            else if(!s1.isEmpty() && ch == '#'){
-                s1.pop();
+            else if(count>0){
+                count--;
+            }
+            else{
+                S.append(ch);
             }
         }
 
-        Stack<Character> t1 = new Stack<>();
-        for(int i=0; i<n2; i++){
+        count = 0;
+        StringBuilder T = new StringBuilder();
+        for(int i=n2-1; i>=0; i--){
             char ch = t.charAt(i);
-            if(ch != '#'){
-                t1.push(ch);
+            if(ch == '#'){
+                count++;
             }
-            else if(!t1.isEmpty() && ch == '#'){
-                t1.pop();
+            else if(count>0){
+                count--;
+            }
+            else{
+                T.append(ch);
             }
         }
 
-        return s1.equals(t1);
+        return S.toString().equals(T.toString());
     }
 }
