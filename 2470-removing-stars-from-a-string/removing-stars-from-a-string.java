@@ -12,13 +12,11 @@ class Solution {
             }
         }
 
-        char arr[] = new char[ss.size()];
-        int i=arr.length-1;
+        StringBuilder sb = new StringBuilder();
         while(!ss.isEmpty()){
-            arr[i] = ss.pop();
-            i--;
+            sb.append(ss.pop());
         }
 
-        return new String(arr);
+        return sb.reverse().toString();
     }
 }
