@@ -14,6 +14,7 @@ class Solution {
 
         int arr[] = new int[n];
         arr[si] = heights[si];
+
         for(int i=si-1; i>=0; i--){
             arr[i] = Math.min(heights[i], arr[i+1]);
         }
