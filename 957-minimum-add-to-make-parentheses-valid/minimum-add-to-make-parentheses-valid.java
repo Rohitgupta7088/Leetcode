@@ -19,11 +19,6 @@ class Solution {
             }
         }
 
-        while(!ss.isEmpty()){
-            ss.pop();
-            count++;
-        }
-
-        return count;
+        return ss.size()+count;
     }
 }
