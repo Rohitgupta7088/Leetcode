@@ -1,8 +1,8 @@
 class Solution {
     public int countElements(int[] nums, int k) {
         int n = nums.length;
-        if(n==1 && k==0){
-            return 1;
+        if(k==0){
+            return n;
         }
 
         // int elecount = 0;
