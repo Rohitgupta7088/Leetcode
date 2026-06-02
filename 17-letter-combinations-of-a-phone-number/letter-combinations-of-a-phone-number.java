@@ -7,35 +7,30 @@ class Solution {
     public List<String> letterCombinations(String digits) {
 
         List<String> bigll = new ArrayList<>();
-
-        if (digits.length() == 0) {
-            return bigll;
-        }
-
-        StringBuilder sb = new StringBuilder();
-        helper(digits, 0, sb, bigll);
+        List<Character> ll = new ArrayList<>();
+        helper(digits, 0, ll, bigll);
 
         return bigll;
     }
 
-    public void helper(String digits, int idx,
-                       StringBuilder sb,
-                       List<String> bigll) {
+    public void helper(String digits, int idx,List<Character> ll, List<String> bigll) {
 
-        if (idx == digits.length()) {
+        if (ll.size() == digits.length()) {
+            StringBuilder sb = new StringBuilder();
+            for(char ch: ll){
+                sb.append(ch);
+            }
             bigll.add(sb.toString());
             return;
         }
 
-        int arrIdx = digits.charAt(idx) - '0' - 2;
-        String str = arr[arrIdx];
+        int arridx = digits.charAt(idx) - '0' - 2;
+        String str = arr[arridx];
 
         for (int i = 0; i < str.length(); i++) {
-            sb.append(str.charAt(i));
-
-            helper(digits, idx + 1, sb, bigll);
-
-            sb.deleteCharAt(sb.length() - 1);
+            ll.add(str.charAt(i));
+            helper(digits, idx + 1, ll, bigll);
+            ll.remove(ll.size() - 1);
         }
     }
 }
