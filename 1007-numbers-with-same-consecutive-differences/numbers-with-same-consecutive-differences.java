@@ -8,6 +8,7 @@ class Solution {
             helper(n, k, sb, ll, i);
             sb.deleteCharAt(sb.length()-1);
         }
+        
         int arr[] = new int[ll.size()];
         for(int i=0; i<ll.size(); i++){
             arr[i] = ll.get(i);
