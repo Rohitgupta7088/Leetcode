@@ -15,18 +15,18 @@ class Solution {
             return;
         }
 
+        for(int i=0; i<bigll.size(); i++){
+            bigll.get(i).add(nums[idx]);
+            helper(nums, k, bigll, idx+1);
+            bigll.get(i).remove(bigll.get(i).size()-1);
+        }
+
         if(bigll.size() < k){
             List<Integer> ll = new ArrayList<>();
             ll.add(nums[idx]);
             bigll.add(new ArrayList<>(ll));
             helper(nums, k, bigll, idx+1);
             bigll.remove(bigll.size()-1);
-        }
-        
-        for(int i=0; i<bigll.size(); i++){
-            bigll.get(i).add(nums[idx]);
-            helper(nums, k, bigll, idx+1);
-            bigll.get(i).remove(bigll.get(i).size()-1);
         }
     }
 
