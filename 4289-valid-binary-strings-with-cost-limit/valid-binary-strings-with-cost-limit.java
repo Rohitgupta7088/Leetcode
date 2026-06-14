@@ -15,7 +15,12 @@ class Solution {
             return;
         }
 
-        if(sb.length() == 0){
+        if(sb.length() > 0 && sb.charAt(sb.length()-1) == '1'){
+            sb.append('0');
+            helper(n, k, ll, sb, idx+1, cost);
+            sb.deleteCharAt(sb.length()-1);
+        }
+        else{
             sb.append('0');
             helper(n, k, ll, sb, idx+1, cost);
             sb.deleteCharAt(sb.length()-1);
@@ -23,23 +28,6 @@ class Solution {
             sb.append('1');
             helper(n, k, ll, sb, idx+1, cost+idx);
             sb.deleteCharAt(sb.length()-1);
-        }
-
-        if(sb.length() > 0){
-            if(sb.charAt(sb.length()-1) != '1'){
-                sb.append('0');
-                helper(n, k, ll, sb, idx+1, cost);
-                sb.deleteCharAt(sb.length()-1);
-
-                sb.append('1');
-                helper(n, k, ll, sb, idx+1, cost+idx);
-                sb.deleteCharAt(sb.length()-1);
-            }
-            else{
-                sb.append('0');
-                helper(n, k, ll, sb, idx+1, cost);
-                sb.deleteCharAt(sb.length()-1);
-            }
         }
     }
 }
