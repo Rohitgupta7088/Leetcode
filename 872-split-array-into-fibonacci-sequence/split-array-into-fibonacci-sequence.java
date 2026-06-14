@@ -26,12 +26,7 @@ class Solution {
                 break;
             }
 
-            if(ll.size() < 2){
-                ll.add((int)(curr));
-                if(helper(nums, ll, i+1)) return true;
-                ll.remove(ll.size()-1);
-            }
-            else{
+            if(ll.size() >= 2){
                 long required = (long)(ll.get(ll.size()-1)) + (long)(ll.get(ll.size()-2));
                 if(curr > required){
                     break;
@@ -39,12 +34,11 @@ class Solution {
                 else if(curr < required){
                     continue;
                 }
-                else{
-                    ll.add((int)(curr));
-                    if(helper(nums, ll, i+1)) return true;
-                    ll.remove(ll.size()-1);
-                }
             }
+
+            ll.add((int)(curr));
+            if(helper(nums, ll, i+1)) return true;
+            ll.remove(ll.size()-1);
         }
         return false;
     }
