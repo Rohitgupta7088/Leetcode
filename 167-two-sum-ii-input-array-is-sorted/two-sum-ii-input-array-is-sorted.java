@@ -48,13 +48,13 @@ class Solution {
     public int[] twoSum(int[] nums, int target) {
         int n = nums.length;
         int arr[] = new int[2];
-        if(n==2){
-            if(nums[0] + nums[1] == target){
-                arr[0] = 1;
-                arr[1] = 2;
-                return arr;
-            }
-        }
+        // if(n==2){
+        //     if(nums[0] + nums[1] == target){
+        //         arr[0] = 1;
+        //         arr[1] = 2;
+        //         return arr;
+        //     }
+        // }
 
         int left = 0;
         int right = n-1;
