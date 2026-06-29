@@ -22,20 +22,27 @@ class Solution {
 
         int mid = si+(ei-si)/2;
 
-        if(mid == 0){
-            if(target <= ll.get(mid)){
-                ll.set(mid, target);
-            }
-            else{
-                helper(ll, mid+1, ei, target);
-            }
-            return;
-        }
+        // if(mid == 0){
+        //     if(target <= ll.get(mid)){
+        //         ll.set(mid, target);
+        //     }
+        //     else{
+        //         helper(ll, mid+1, ei, target);
+        //     }
+        //     return;
+        // }
 
-        if(ll.get(mid-1)<target && ll.get(mid)>=target){
-            ll.set(mid, target);
-        }
-        else if(ll.get(mid-1)<target && ll.get(mid)<target){
+        // if(ll.get(mid-1)<target && ll.get(mid)>=target){
+        //     ll.set(mid, target);
+        // }
+        // else if(ll.get(mid-1)<target && ll.get(mid)<target){
+        //     helper(ll, mid+1, ei, target);
+        // }
+        // else{
+        //     helper(ll, si, mid, target);
+        // }
+
+        if(ll.get(mid) < target){
             helper(ll, mid+1, ei, target);
         }
         else{
