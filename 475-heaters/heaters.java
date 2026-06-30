@@ -27,35 +27,42 @@ class Solution {
             return 0;
         }
 
-        if(mid==0){
-            if(heaters[mid] < target){
-                return helper(heaters, mid+1, ei, target);
-            }
-            else{
-                return heaters[mid]-target;
-            }
-        }
+        // if(mid==0){
+        //     if(heaters[mid] < target){
+        //         return helper(heaters, mid+1, ei, target);
+        //     }
+        //     else{
+        //         return heaters[mid]-target;
+        //     }
+        // }
 
-        if(mid==heaters.length-1){
-            if(heaters[mid] > target && heaters[mid-1]<=target){
-                return Math.min(heaters[mid]-target, target-heaters[mid-1]);
-            }
-            else if(heaters[mid]<target){
-                return helper(heaters, mid+1, ei, target);
-            }
-            else{
-                return helper(heaters, si, mid-1, target);
-            }
-        }
+        // if(mid==heaters.length-1){
+        //     if(heaters[mid] > target && heaters[mid-1]<=target){
+        //         return Math.min(heaters[mid]-target, target-heaters[mid-1]);
+        //     }
+        //     else if(heaters[mid]<target){
+        //         return helper(heaters, mid+1, ei, target);
+        //     }
+        //     else{
+        //         return helper(heaters, si, mid-1, target);
+        //     }
+        // }
 
-        if(heaters[mid] >target && heaters[mid-1]<=target){
-            return Math.min(heaters[mid]-target, target-heaters[mid-1]);
-        }
-        else if(heaters[mid] >target && heaters[mid-1]>target){
-            return helper(heaters, si, mid-1, target);
+        // if(heaters[mid] >target && heaters[mid-1]<=target){
+        //     return Math.min(heaters[mid]-target, target-heaters[mid-1]);
+        // }
+        // else if(heaters[mid] >target && heaters[mid-1]>target){
+        //     return helper(heaters, si, mid-1, target);
+        // }
+        // else{
+        //     return helper(heaters, mid+1, ei, target);
+        // }
+
+        if(heaters[mid]<target){
+            return helper(heaters, mid+1, ei, target);
         }
         else{
-            return helper(heaters, mid+1, ei, target);
+            return helper(heaters, si, mid-1, target);
         }
     }
 }
