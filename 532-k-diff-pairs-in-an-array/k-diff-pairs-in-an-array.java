@@ -45,9 +45,7 @@ class Solution {
         int left =  0;
         int right = 1;
 
-        List<Integer> ll = new ArrayList<>();
         while(right < nums.length && left<nums.length){
-            if( !ll.contains(nums[left]) ){
 
                 if(left == right){
                     right++;
@@ -55,10 +53,14 @@ class Solution {
                 }
 
                 if(nums[right]-nums[left] == k){
-                    ll.add(nums[left]);
                     count++;
                     right++;
                     left++;
+
+                    while(left<nums.length && nums[left]==nums[left-1]){
+                        left++;
+                    }
+
                     continue;
                 }
 
@@ -68,11 +70,6 @@ class Solution {
                 else if(nums[right]-nums[left] >k){
                     left++;
                 }
-            }
-            else{
-                left++;
-                continue;
-            }
         }
 
         return count;
