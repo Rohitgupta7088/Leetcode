@@ -15,18 +15,18 @@ class Solution {
 
         int mid = si+(ei-si)/2;
 
-        if(letters[mid] == target){
-            int i=mid+1;
-            while(i<letters.length && letters[i]==letters[i-1]){
-                i++;
-            }
-            if(i<letters.length){
-                return letters[i];
-            }
-            else{
-                return letters[0];
-            }
-        }
+        // if(letters[mid] == target){
+        //     int i=mid+1;
+        //     while(i<letters.length && letters[i]==letters[i-1]){
+        //         i++;
+        //     }
+        //     if(i<letters.length){
+        //         return letters[i];
+        //     }
+        //     else{
+        //         return letters[0];
+        //     }
+        // }
 
         if(letters[mid]-'a' > target-'a'){
             return helper(letters, si, mid-1, target);
