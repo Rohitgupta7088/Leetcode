@@ -11,25 +11,25 @@ class Solution {
         int mid = si+(ei-si)/2;
 
 
-        // if(mid == 0){
-        //     if(nums[mid]<nums[mid+1]){
-        //         return helper(nums, mid+1, ei);
-        //     }
-        //     else{
-        //         return mid;
-        //     }
-        // }
+        if(mid == 0){
+            if(nums[mid]<nums[mid+1]){
+                return helper(nums, mid+1, ei);
+            }
+            else{
+                return mid;
+            }
+        }
         
-        // if(mid==nums.length-1){
-        //     if(nums[mid]<nums[mid-1]){
-        //         return helper(nums, si, mid-1);
-        //     }
-        //     else{
-        //         return mid;
-        //     }
-        // }
+        if(mid==nums.length-1){
+            if(nums[mid]<nums[mid-1]){
+                return helper(nums, si, mid-1);
+            }
+            else{
+                return mid;
+            }
+        }
 
-        if(mid>0 && mid<nums.length-1 && nums[mid-1]<nums[mid] && nums[mid]>nums[mid+1]){
+        if(nums[mid-1]<nums[mid] && nums[mid]>nums[mid+1]){
             return mid;
         }
 
