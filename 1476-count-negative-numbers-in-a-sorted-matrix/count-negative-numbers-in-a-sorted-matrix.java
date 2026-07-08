@@ -1,21 +1,21 @@
 class Solution {
     public int countNegatives(int[][] grid) {
         int count = 0;
-        List<Integer> ll = new ArrayList<>();
+        int lastidx = -1;
         for(int i=0; i<grid.length; i++){
             int idx = -1;
-            if(ll.size() == 0){
+            if(lastidx == -1){
                 idx = helper(grid[i], 0, grid[0].length-1);
                 if(idx != -1){
                     count += ((grid[0].length-idx)*(grid.length-i));
-                    ll.add(idx);
+                    lastidx = idx;
                 }
             }
             else{
-                idx = helper(grid[i], 0, ll.get(ll.size()-1)-1);
+                idx = helper(grid[i], 0, lastidx-1);
                 if(idx != -1){
-                    count += ((ll.get(ll.size()-1)-idx)*(grid.length-i));
-                    ll.add(idx);
+                    count += ((lastidx-idx)*(grid.length-i));
+                    lastidx = idx;
                 }
             }
         }
