@@ -12,11 +12,16 @@ class Solution {
             int mid = low+(high-low)/2;
 
             int sum = 0;
+            boolean foundbug = false;
             for(int num: nums){
                 sum += Math.ceil((double)num/mid);
+                if(sum>threshold){
+                    foundbug = true;
+                    break;
+                }
             }
 
-            if(sum<=threshold){
+            if(!foundbug){
                 ans = Math.min(ans, mid);
                 high = mid-1;
             }
