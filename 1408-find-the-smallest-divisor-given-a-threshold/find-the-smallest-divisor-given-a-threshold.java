@@ -10,18 +10,7 @@ class Solution {
 
         while(low<=high){
             int mid = low+(high-low)/2;
-
-            int sum = 0;
-            boolean foundbug = false;
-            for(int num: nums){
-                sum += Math.ceil((double)num/mid);
-                if(sum>threshold){
-                    foundbug = true;
-                    break;
-                }
-            }
-
-            if(!foundbug){
+            if(helper(nums, mid, threshold)){
                 ans = Math.min(ans, mid);
                 high = mid-1;
             }
@@ -31,5 +20,15 @@ class Solution {
         }
 
         return ans;
+    }
+
+    public boolean helper(int nums[], int mid, int threshold){
+        int sum = 0;
+        for(int num: nums){
+            sum += Math.ceil((double)num/mid);
+            if(sum>threshold) return false;
+        }
+
+        return true;
     }
 }
