@@ -21,6 +21,10 @@ class Solution {
 
             int tempdiff = Math.abs(sum-target);
 
+            if(tempdiff == 0){
+                return mid;
+            }
+
             if(dis>tempdiff){
                 ans = mid;
                 dis = tempdiff;
