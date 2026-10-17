@@ -2,34 +2,33 @@ class Solution {
     public static int search(int nums[], int target){
         int si = 0;
         int ei = nums.length-1;
-        return searchidx(nums, si, ei, target);
+        return helper(si, ei, nums, target);
     }
 
-    public static int searchidx(int nums[], int si, int ei, int target){
-        int mid = si + (ei-si)/2;
-
-        if(si > ei){
+    public static int helper(int si, int ei, int nums[], int target){
+        if(si>ei){
             return -1;
         }
+        int mid = si+(ei-si)/2;
 
         if(nums[mid] == target){
             return mid;
         }
 
-        if(nums[si] <= nums[mid]){
+        if(nums[si]<=nums[mid]){
             if(nums[si]<=target && target<nums[mid]){
-                return searchidx(nums,si,mid-1,target);
+                return helper(si, mid-1, nums, target);
             }
             else{
-                return searchidx(nums,mid+1,ei,target);
+                return helper(mid+1, ei, nums, target);
             }
         }
         else{
-            if(nums[mid]<target && target<= nums[ei]){
-                return searchidx(nums,mid+1,ei,target);
+            if(nums[mid]<target && target<=nums[ei]){
+                return helper(mid+1, ei, nums, target);
             }
             else{
-                return searchidx(nums,si,mid-1,target);
+                return helper(si, mid-1, nums, target);
             }
         }
     }
