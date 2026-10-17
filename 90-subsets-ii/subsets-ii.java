@@ -1,23 +1,23 @@
 class Solution {
-    public List<List<Integer>> subsetsWithDup(int[] nums){
-        List<List<Integer>> biglist = new ArrayList<>();
+    public List<List<Integer>> subsetsWithDup(int[] nums) {
+        List<Integer> ll = new ArrayList<>();
+        List<List<Integer>> bigll = new ArrayList<>();
         Arrays.sort(nums);
-        int i=0;
-        subset(nums, biglist, new ArrayList<>(), i);
-        return biglist;
+        helper(0, ll, bigll, nums);
+        return bigll;
     }
 
-    public void subset(int nums[], List<List<Integer>> biglist, List<Integer> list, int i){
-        biglist.add(new ArrayList<>(list));
-        for(int j=i; j<nums.length; j++){
+    public void helper(int idx, List<Integer> ll, List<List<Integer>> bigll, int nums[]){
+        bigll.add(new ArrayList<>(ll));
 
-            if(j>i && nums[j] == nums[j-1]){
+        for(int i=idx; i<nums.length; i++){
+            if(i>idx && nums[i] == nums[i-1]){
                 continue;
             }
 
-            list.add(nums[j]);
-            subset(nums, biglist, list, j+1);
-            list.remove(list.size()-1);
+            ll.add(nums[i]);
+            helper(i+1, ll, bigll, nums);
+            ll.remove(ll.size()-1);
         }
     }
 }
