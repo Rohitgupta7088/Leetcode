@@ -1,8 +1,9 @@
 class Solution {
     public boolean containsDuplicate(int[] nums) {
-        Arrays.sort(nums);
-        for(int i=1; i<nums.length; i++){
-            if(nums[i] == nums[i-1]){
+        HashMap<Integer, Integer> hm = new HashMap<>();
+        for(int num: nums){
+            hm.put(num, hm.getOrDefault(num,0)+1);
+            if(hm.get(num) >= 2){
                 return true;
             }
         }
