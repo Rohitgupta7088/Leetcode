@@ -1,24 +1,17 @@
 class Solution {
     public int majorityElement(int[] nums) {
-        return helper(nums,0,nums[0]);
-    }
-    public int helper(int nums[], int si, int ref){
-        if(si >= nums.length){
-            return -1;
+        int n = nums.length;
+        HashMap<Integer, Integer> hm = new HashMap<>();
+        int max = Integer.MIN_VALUE;
+        
+        for(int num: nums){
+            hm.put(num, hm.getOrDefault(num, 0)+1);
+            if(hm.get(num)>(n/2)){
+                max = num;
+                break;
+            }
         }
-        int count = 0;
-        for(int i=si; i<nums.length; i++){
-            if(nums[i] == ref){
-                count ++;
-            }
-            else{
-                count --;
-            }
 
-            if(count < 0){
-                return helper(nums,i,nums[i]);
-            }
-        }
-        return ref;
+        return max;
     }
 }
