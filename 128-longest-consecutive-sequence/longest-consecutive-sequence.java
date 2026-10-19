@@ -3,23 +3,24 @@ class Solution {
         if(nums.length == 0){
             return 0;
         }
+        
         Arrays.sort(nums);
         int max = 1;
         int ref = nums[0];
-        int count = 1;
+        int count =  1;
         for(int i=1; i<nums.length; i++){
-            if(nums[i] == ref){
+            if(ref == nums[i]){
                 continue;
             }
-            else if(nums[i] == ref+1){
-                count++;
+            else if(nums[i] == (ref+1)){
                 ref = nums[i];
+                count++;
             }
             else{
                 ref = nums[i];
                 count = 1;
             }
-            max = Math.max(count,max);
+            max = Math.max(max,count);
         }
         return max;
     }
