@@ -1,31 +1,32 @@
 class Solution {
     public boolean isPalindrome(String s) {
-        // s=s.toLowerCase().replaceAll("[^a-z0-9]", "");
-        // for(int i=0; i<s.length()/2; i++){
-        //     if(s.charAt(i) != s.charAt(s.length()-1-i)){
-        //         return false;
-        //     }
-        // }
-        // return true;
+        if(s.length() == 0 || s.length() == 1) return true;
 
-        int i=0;
-        int j=s.length()-1;
-        while( i < j){
-
-            while(i<j && !Character.isLetterOrDigit(s.charAt(i))){
-                i++;
+        int left = 0;
+        int right = s.length()-1;
+        while(left<=right){
+            while( left<=right && 
+                !(s.charAt(left)>='a' && s.charAt(left)<='z') && 
+                !(s.charAt(left)>='A' && s.charAt(left)<='Z') && 
+                !(s.charAt(left)>='0' && s.charAt(left)<='9') ){
+                left++;
             }
 
-            while(i<j && !Character.isLetterOrDigit(s.charAt(j))){
-                j--;
+            while( left<=right && 
+                !(s.charAt(right)>='a' && s.charAt(right)<='z') && 
+                !(s.charAt(right)>='A' && s.charAt(right)<='Z') && 
+                !(s.charAt(right)>='0' && s.charAt(right)<='9') ){
+                right--;
             }
 
-            if(Character.toLowerCase(s.charAt(i)) != Character.toLowerCase(s.charAt(j))){
+            if(left <= right &&
+                Character.toLowerCase(s.charAt(left)) !=
+                Character.toLowerCase(s.charAt(right))) {
                 return false;
             }
 
-            i++;
-            j--;
+            left++;
+            right--;
         }
 
         return true;
