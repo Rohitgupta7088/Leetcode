@@ -1,37 +1,33 @@
 class Solution {
     public String countAndSay(int n) {
-        String oldstr = "";
-        return helper(1, oldstr, n);
+        if(n == 1){
+            return "1";
+        }
+
+        StringBuilder sb = new StringBuilder("1");
+        return helper(sb, n, 1).toString();
     }
 
-    public String helper(int num, String oldstr, int n){
-        if(num > n){
-            return oldstr;
+    public StringBuilder helper(StringBuilder sb, int n, int term){
+        if(n == term){
+            return sb;
         }
 
-        String newstr = "";
-        if(num == 1){
-            oldstr = "1";
-            return helper(num+1, oldstr, n);
-        }
-
+        StringBuilder newsb = new StringBuilder();
+        int count = 0;
         int i=0;
-        while(i < oldstr.length()){
-            int count = 1;
-            char curr = oldstr.charAt(i);
-            
-            int j=i+1;
-            while( j<oldstr.length() && oldstr.charAt(j) == oldstr.charAt(i)){
-                count ++;
-                j++;
+        while(i<sb.length()){
+            char ch = sb.charAt(i);
+            while(i<sb.length() && sb.charAt(i) == ch){
+                count++;
+                i++;
             }
-            i=j-1;
 
-            newstr += (char)(count + '0');
-            newstr += oldstr.charAt(i);
-            i++;
+            newsb.append(String.valueOf(count));
+            newsb.append(ch);
+            count = 0;
         }
 
-        return helper(num+1, newstr, n);
+        return helper(newsb, n, term+1);
     }
 }
