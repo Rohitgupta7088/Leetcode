@@ -4,49 +4,45 @@ class Solution {
         //     return false;
         // }
 
-        // StringBuilder newstr_s = new StringBuilder(s);
-        // StringBuilder newstr_t = new StringBuilder(t);
-
+        // StringBuilder news = new StringBuilder(s);
+        // StringBuilder newt = new StringBuilder(t);
+ 
         // for(int i=0; i<s.length(); i++){
-        //     char ch1 = s.charAt(i);
-        //     char ch2 = t.charAt(i);
+        //     char chs = s.charAt(i);
+        //     char cht = t.charAt(i);
         //     for(int j=0; j<t.length(); j++){
-        //         if(newstr_t.charAt(j) == ch2){
-        //             newstr_t.setCharAt(j, ch1);
+        //         if(newt.charAt(j) == cht){
+        //             newt.setCharAt(j, chs);
         //         }
         //     }
-
         // }
 
         // for(int i=0; i<t.length(); i++){
-        //     char ch1 = t.charAt(i);
-        //     char ch2 = s.charAt(i);
+        //     char chs = s.charAt(i);
+        //     char cht = t.charAt(i);
         //     for(int j=0; j<s.length(); j++){
-        //         if(newstr_s.charAt(j) == ch2){
-        //             newstr_s.setCharAt(j, ch1);
+        //         if(news.charAt(j) == chs){
+        //             news.setCharAt(j, cht);
         //         }
         //     }
         // }
 
-        // return ( newstr_t.toString().equals(s) && newstr_s.toString().equals(t) );
+        // return (newt.toString().equals(s) && news.toString().equals(t));
 
-        if(s.length() != t.length()){
-            return false;
-        }
-        
-        int map1[] = new int[256];
-        int map2[] = new int[256];
+
+        int arrs[] = new int[256];
+        int arrt[] = new int[256];
 
         for(int i=0; i<s.length(); i++){
-            char c1 = s.charAt(i);
-            char c2 = t.charAt(i);
+            char chs = s.charAt(i);
+            char cht = t.charAt(i);
 
-            if(map1[c1] == 0 && map2[c2] == 0){
-                map1[c1] = c2;
-                map2[c2] = c1;
+            if(arrs[chs] == 0 && arrt[cht] == 0){
+                arrs[chs] = cht;
+                arrt[cht] = chs;
             }
             else{
-                if(map1[c1]!=c2 || map2[c2]!=c1){
+                if(arrs[chs] != cht || arrt[cht] != chs){
                     return false;
                 }
             }
