@@ -1,18 +1,26 @@
 class Solution {
     public char findTheDifference(String s, String t) {
-        int arr[] = new int[26];
-
+        HashMap<Character, Integer> hm = new HashMap<>();
         for(int i=0; i<s.length(); i++){
-            arr[s.charAt(i)-'a']++;
+            char ch = s.charAt(i);
+            hm.put(ch, hm.getOrDefault(ch, 0)+1);
         }
 
+        char extra = '\0';
         for(int i=0; i<t.length(); i++){
-            if(arr[t.charAt(i)-'a'] == 0){
-                return t.charAt(i);
+            char ch = t.charAt(i);
+            if(!hm.containsKey(ch)){
+                extra = ch;
+                break;
             }
-            arr[t.charAt(i)-'a']--;
+            else{
+                hm.put(ch, hm.get(ch)-1);
+                if(hm.get(ch) == 0){
+                    hm.remove(ch);
+                }
+            }
         }
 
-        return '0';
+        return extra;
     }
 }
