@@ -1,38 +1,43 @@
 class Solution {
     public String getHint(String secret, String guess) {
-        StringBuilder sec = new StringBuilder(secret);
-        StringBuilder gue = new StringBuilder(guess);
-        String hintstr = "";
-        int countbull = 0;
-       for(int i=0; i<sec.length(); i++){
-            if( sec.charAt(i) == gue.charAt(i) ){
-                countbull += 1;
-                sec.deleteCharAt(i);
-                gue.deleteCharAt(i);
+        StringBuilder s = new StringBuilder(secret);
+        StringBuilder g = new StringBuilder(guess);
+
+        int bull = 0;
+        for(int i=0; i<s.length(); i++){
+            if( s.charAt(i) == g.charAt(i) ){
+                bull++;
+                s.deleteCharAt(i);
+                g.deleteCharAt(i);
                 i--;
             }
         }
 
-        hintstr += String.valueOf(countbull);;
-        hintstr += 'A';
+        StringBuilder hint = new StringBuilder();
+        hint.append(String.valueOf(bull));
+        hint.append('A');
 
-        int arr[] = new int[10];
-        for(int i=0; i<sec.length(); i++){
-            arr[sec.charAt(i)-'0'] += 1;
+        HashMap<Character, Integer> hm = new HashMap<>();
+        for(int i=0; i<s.length(); i++){
+            char ch = s.charAt(i);
+            hm.put(ch, hm.getOrDefault(ch, 0)+1);
         }
 
-        int countcow = 0;
-        for(int i=0; i<gue.length(); i++){
-            char ch = gue.charAt(i);
-            if(arr[ch-'0'] > 0){
-                countcow++;
-                arr[ch-'0']--;
+        int cows = 0;
+        for(int i=0; i<g.length(); i++){
+            char ch = g.charAt(i);
+            if(hm.containsKey(ch)){
+                cows++;
+                hm.put(ch, hm.get(ch)-1);
+                if(hm.get(ch) == 0){
+                    hm.remove(ch);
+                }
             }
         }
 
-        hintstr += String.valueOf(countcow);;
-        hintstr += 'B';
+        hint.append(String.valueOf(cows));
+        hint.append('B');
 
-        return hintstr;
+        return hint.toString();
     }
 }
